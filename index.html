@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Design Space</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Some early code for interpolating primitive SVGs.">
+    <meta name="author" content="Andrew Johnson">
+    <link rel="stylesheet" href="style.css">
+    <link href="//cloud.webtype.com/css/a7ec597b-e99b-4796-8368-035d091a80a5.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<div class="credit">
+			<p>Example of interpolating primitive SVGs. Thanks to <a href="http://letterror.com/" target="0">Erik Van Blokland</a>, <a href="nicksherman.com" target="0">Nick Sherman</a>, <a href="http://thecjdunn.com/" target="0">CJ Dunn</a>, <a href="http://www.typologic.nl/" target="0">Nina Stössinger</a>, <a href="http://www.typosansplomb.com/" target="0">Jérémie Hornus</a> & <a href="http://en.wikipedia.org/wiki/Gerrit_Noordzij" target="0">Gerrit Noordzij</a>.</p>
+			<p>‘H’ Glyph from the Condor font family.</p>
+			<p>Working in Chrome +43.</p>
+		</div>
+
+		<div class="interpolator">
+
+			<div id="result">
+				<div id="resultSVGMarkup" content-editable="true">
+					<svg version="1.1" id="result-svg" viewBox="0 0 200 250">
+					<polygon fill="#000" points="67.47,128.29 15.38,128.29 15.38,257.97 0,257.97 0,0 15.38,0 15.38,122.34 67.47,122.34 67.47,0 82.85,0 82.85,257.97 67.47,257.97"/>
+					</svg>
+				</div>
+				<div id="instances">
+				</div>
+				<input id="exportedMarkup" value=""></input>
+			</div>
+
+			<div id="space">
+				<div class="master 1">
+					<svg version="1.1" id="master_1" width="100%" viewBox="0 0 257.97 257.97">
+					<polygon points="67.47,128.29 15.38,128.29 15.38,257.97 0,257.97 0,0 15.38,0 15.38,122.34 67.47,122.34 67.47,0 82.85,0 82.85,257.97 67.47,257.97 "/>
+					</svg>
+				</div>
+				<div class="master 2">
+					<svg version="1.1" id="master_2" width="100%" viewBox="0 0 257.97 257.97">
+					<polygon points="89.14,137.38 62.57,137.38 62.57,257.97 0,257.97 0,0 62.57,0 62.57,114.31 89.14,114.31 89.14,0 151.36,0 151.36,257.97 89.14,257.97"/>
+					</svg>
+				</div>
+				<div class="master 3">
+					<svg version="1.1" id="master_3" width="100%" viewBox="0 0 257.97 257.97">
+					<polygon points="290.13,130.38 19.92,130.38 19.92,257.97 0,257.97 0,0 19.92,0 19.92,120.25 290.13,120.25 290.13,0 310.06,0 310.06,257.97 290.13,257.97"/>
+					</svg>
+				</div>
+				<div class="master 4">
+					<svg version="1.1" id="master_4" width="100%" viewBox="0 0 257.97 257.97">
+					<polygon points="293.28,140.17 131.43,140.17 131.43,257.97 0,257.97 0,0 131.43,0 131.43,111.51 293.28,111.51 293.28,0 424.71,0 424.71,257.97 293.28,257.97"/>
+					</svg>
+				</div>
+
+				<div id='xbar'></div>
+				<div id='ybar'></div>
+			</div>
+			<!-- <div id="coords">Coordinates: </div> -->
+			<div id="percents">Percents: </div> <div id="status"></div>
+
+		<div id="inputs">
+			<input type="text" id="masterInput1" value='<polygon points="67.47,128.29 15.38,128.29 15.38,257.97 0,257.97 0,0 15.38,0 15.38,122.34 67.47,122.34 67.47,0 82.85,0 82.85,257.97 67.47,257.97 "/>' onchange="updateInput('masterInput1', this.value)"></input>
+			<input type="text" id="masterInput2" value='<polygon points="89.14,137.38 62.57,137.38 62.57,257.97 0,257.97 0,0 62.57,0 62.57,114.31 89.14,114.31 89.14,0 151.36,0 151.36,257.97 89.14,257.97 "/>' onchange="updateInput('masterInput2', this.value)"></input>
+			<input type="text" id="masterInput3" value='<polygon points="290.13,130.38 19.92,130.38 19.92,257.97 0,257.97 0,0 19.92,0 19.92,120.25 290.13,120.25 290.13,0 310.06,0 310.06,257.97 290.13,257.97"/>' onchange="updateInput('masterInput3', this.value)"></input>
+			<input type="text" id="masterInput4" value='<polygon points="293.28,140.17 131.43,140.17 131.43,257.97 0,257.97 0,0 131.43,0 131.43,111.51 293.28,111.51 293.28,0 424.71,0 424.71,257.97 293.28,257.97"/>' onchange="updateInput('masterInput4', this.value)"></input>
+		</div>
+		<div>
+
+		<footer>
+			<script src="designspace.js"></script> <!-- load the maths -->
+    		<script src="interpolation-ui.js"></script> <!-- load more interface specific maths -->
+		</footer>
+  	</body>
+</html>

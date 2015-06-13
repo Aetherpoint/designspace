@@ -1,0 +1,392 @@
+@charset="utf-8";
+
+* {
+	vertical-align: baseline;
+	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+	font-feature-settings: "kern" 1, "liga" 1, "case" 1, "dlig" 1, "frac" 1;
+	-webkit-font-feature-settings: "kern" 1, "liga" 1, "case" 1, "dlig" 1, "frac" 1;  /* No variation */
+    -moz-font-feature-settings: "kern" 1, "liga" 1, "case" 1, "dlig" 1, "frac" 1;  /* Firefox 15.0 onwards explicitly set feature values */
+    -ms-font-feature-settings: "kern" 1, "liga" 1, "case" 1, "dlig" 1, "frac" 1; 
+}
+
+html, body {
+	height: 100%;
+	margin: 0;
+}
+header {
+	padding: 1rem 10%;
+	text-transform: uppercase;
+	font: 1rem/1rem 'inputsans-regular' normal;
+	color: #479595;
+}
+header #icon {
+	margin-bottom: -.8rem;
+	margin-top: -.6rem;
+}
+
+.interpolator {
+	padding: 5% 10% 16% 10%;
+	height: 100%;
+	background-color: #8BCACC;
+	font-family: "Input Mono";
+	font-style: normal;
+	font-weight: normal;
+	font: 1.1rem/1rem 'Input Mono' normal;
+}
+#coords {
+	margin: .5rem 0;
+	color: #FEFEFE;
+	opacity: .4;
+}
+#percents {
+	margin: 1rem 0;
+	color: #FEFEFE;
+}
+#status {
+	margin: 1rem 0;
+	color: #ED4556;
+	font-family: "Input Mono";
+	font-style: normal;
+	font-weight: normal;
+	font: 1.1rem/1rem 'Input Mono' bold;
+}
+#status a:link, #status a:visited {
+	color: #479696;
+}
+#status a:hover, #status a:active, #status a:focus {
+	color: #479696;
+	opacity: .35;
+}
+#space {
+	border: solid #EEE 1px;
+	height: 60%;
+	width: 100%;
+	background-color: #FEFEFE;
+	cursor: crosshair;
+	position: relative;
+	padding: 1rem 1rem 1rem 0;
+
+
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	flex-wrap: wrap;
+	-moz-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	-webkit-flex-wrap: wrap;
+	justify-content: space-between;
+	-moz-justify-content: space-between;
+	-ms-justify-content: space-between;
+	-webkit-justify-content: space-between;
+	align-items: stretch;
+	-moz-align-items: stretch;
+	-ms-align-items: stretch;
+	-webkit-align-items: stretch;
+}
+#space .master {
+/*	height: 25%;*/
+/*	min-height: 5rem;*/
+	min-width: 4rem;
+	flex: 2 50%;
+	-moz-flex: 2 50%;
+	-webkit-flex: 2 50%;	
+}
+#space .master:nth-child(odd) {
+	padding-right: 40%;
+}
+#space .master:nth-child(even) {
+	padding-left: 40%;
+	/*margin-left: -8rem;*/ /* Temporary adjustment for wide masters */
+}
+/* Won't necesarily scale to higher dimensions but works for now */
+#space .master:nth-child(1n+3) {
+	align-self: flex-end;
+	-moz-align-self: flex-end;
+	-webkit-align-self: flex-end;
+	-ms-align-self: flex-end;
+}
+#space .1 {
+
+}
+#space .2 {
+
+}
+#space .3 {
+	margin-bottom: 1rem;
+}
+#space .4 {
+	margin-bottom: 1rem;
+}
+#space .master svg {
+	/*max-width: 100%;*/
+	overflow: visible;
+	position: relative;
+	height: 1.5rem;
+/*	width: 8rem;*/
+}
+#space .master svg polygon {
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+#xbar {
+	width: 100%;
+	height: 1px;
+	position: absolute;
+	background-color: #EEE;
+	top: 0;
+	left: 0;
+}
+#ybar {
+	width: 1px;
+	height: 100%;
+	position: absolute;
+	background-color: #EEE;
+	top: 0;
+	left: 0;
+}
+
+#result {
+	background-color: #FEFEFE;
+	padding: 2.5% 25%;
+	text-align: center;
+	margin: 1% 0;
+	position: relative;
+}
+#result-svg {
+	max-height: 8rem;
+	overflow: hidden;
+}
+.credit {
+	font-family: "Input Mono";
+	font-style: normal;
+	font-weight: normal;
+	font: .9rem/1.3rem 'Input Mono' normal;
+	padding: 4.15% 10% 4% 10%;
+	border-top: solid #8BCACC 2px;
+	color: #8BCACC;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+}
+.credit p {
+	margin: 0 0 .6rem 0;
+	max-width: 42rem;
+}
+a:link, a:visited {
+	color: #479696;
+	text-decoration: none;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+}
+a:hover, a:focus, a:active {
+	color: #E9AA41;
+}
+
+input {
+	padding: .5rem;
+	font-family: "Input Mono";
+	font-style: normal;
+	font-weight: normal;
+	font: .9rem/1.2rem 'Input Mono' normal;
+	opacity: .3;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	border: solid #FEFEFE 1px;
+}
+input:focus, input:active {
+	outline: none;
+	border: solid #8BCACC 1px;
+	padding: 1.5% 1.5%;
+	opacity: 1;
+	width: 100%;
+	cursor: text;
+}
+input:hover {
+	cursor: text;
+}
+#inputs {
+	display: flex;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	flex-wrap: wrap;
+	-moz-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	-webkit-flex-wrap: wrap;
+	justify-content: space-between;
+	-moz-justify-content: space-between;
+	-ms-justify-content: space-between;
+	-webkit-justify-content: space-between;
+	align-items: stretch;
+	-moz-align-items: stretch;
+	-ms-align-items: stretch;
+	-webkit-align-items: stretch;
+	position: relative;
+}
+#inputs input:nth-child(odd) {
+	margin-right: .25%;
+}
+#inputs input:nth-child(even) {
+	margin-left: .25%;
+}
+#inputs input {
+	flex: 2 45%;
+	-moz-: 2 45%;	
+	-webkit-: 2 45%;
+	
+	margin-top: .5%;
+}
+#exportedMarkup {
+	pointer-events: none; /* Ideally we'd use something like this for showing instances */
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 95%;
+	margin: 0 2.5%;
+	height: 100%;
+	opacity: 0;
+	border: none;
+}
+#exportedMarkup:hover {
+/*	opacity: .1;*/
+}
+#exportedMarkup:active, #exportedMarkup:focus {
+	opacity: .9;
+	border: transparent;
+	padding: 0;
+}
+input#exportedMarkup:active, input#exportedMarkup:focus {
+	padding: .5rem;
+}
+#instances {
+	position: absolute;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	flex-wrap: wrap;
+	-moz-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	-webkit-flex-wrap: wrap;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+	-moz-justify-content: space-between;
+	-ms-justify-content: space-between;
+	align-items: stretch;
+	-webkit-align-items: stretch;
+	-moz-align-items: stretch;
+	-ms-align-items: stretch;
+	top: -2rem;
+	left: 0;
+	width: 100%;
+	text-align: left;
+	/*border: solid #EEE 1px;*/
+}
+.instance {
+	font-family: "Input Mono";
+	font-style: normal;
+	font-weight: normal;
+	font: .8rem/1rem 'Input Mono' normal;
+	color: #FEFEFE;
+	padding: 0 .5rem .2rem .5rem;
+	flex: 1;
+	-webkit-flex: 1;
+	-moz-flex: 1;
+	width: 10%;
+	z-index: 100;
+	border: solid #FEFEFE 1px;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	overflow: hidden;
+	white-space: nowrap;
+	position: relative;
+}
+.instance div {
+	height: 1.7rem;
+}
+.instance div:hover {
+	padding-bottom: 1rem;
+/*	transorm: translateY(.2rem);
+	-webkit-transorm: translateY(.2rem);*/
+}
+.instance:hover {
+	cursor: pointer;
+	margin-top: -.3rem;
+}
+
+.instanceSVG {
+	width: 1rem;
+	position: absolute;
+	left: -.6rem;
+	top: .45rem;
+}
+.instanceSVG #result-svg {
+	max-height: 1rem;
+ 	min-width: 3rem;
+}
+
+.instance .instanceNumber {
+	width: 1rem;
+	display: inline-block;
+	width: 100%;
+}
+.instance #close {
+	width: 1.3rem;
+	display: inline-block;
+	font-family: "Input Mono";
+	font-style: normal;
+	font-weight: normal;
+	font: 1.2rem/1rem 'Input Mono' normal;
+	text-align: right;
+	margin-left: -1.2rem;
+	margin-top: .3rem;
+	padding: .1rem .2rem 0 0;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.instance #close:hover {
+	opacity: .2;
+}
+.instancePoint {
+	height: .9rem;
+	width: .9rem;
+	border-radius: 100%;
+	border: solid #8BCACC 2px;
+	position: absolute;
+	margin-top: -.5rem;
+	margin-left: -.5rem;
+}
+.instanceCode {
+	padding-left: 2rem;
+}
+.instanceCode:hover, .instanceCode:active  {
+	cursor: text;
+}
+.instanceCode div {
+}
+[contenteditable="true"]:active,
+[contenteditable="true"]:focus{
+	border:none;
+	outline:none;
+}
